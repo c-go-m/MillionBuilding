@@ -1,0 +1,62 @@
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./BuildingApi/Dockerfile
+    container_name: web
+    ports:
+      - "9001:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development      
+      - ASPNETCORE_HTTP_PORTS=8080
+      - CONFIGURATION_APPLICATION_CORS_POLICY=http://localhost:4200
+      - CORS_POLICY=cors_policy
+      - CONNECTION_STRING_DATABASE=Server=sqlserver;Database=million_building;User Id=sa;Password=Mayo_2025.,*;TrustServerCertificate=True;
+      - JWT_ISSUER=https://api.million.com
+      - JWT_AUDIENCE=https://api.million.com
+      - JWT_KEY=HuN3v!2KD8s93l*Pq2Ws9ZmQ5cXyRz8B
+      - JWT_EXPIRE=30
+    depends_on:
+      - sonarqube
+    networks:
+      - net
+
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    depends_on:
+      - sqlserver
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    networks:
+      - net
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Mayo_2025.,*"
+    ports:
+      - "9005:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - net
+
+volumes:
+  sql_data:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+
+networks:
+  net:

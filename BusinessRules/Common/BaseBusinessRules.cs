@@ -1,12 +1,13 @@
 ﻿using BusinessRules.Interface;
 using DataAccess.Interface;
+using Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Utilities.Objects;
 
 namespace BusinessRules.Common
 {
     public abstract class BaseBusinessRules<T, TRepository> : IBaseBusinessRules<T>
-        where T : class, new()
+        where T : BaseEntity, new()
         where TRepository : class, IBaseRepository<T>
     {
 
@@ -18,6 +19,7 @@ namespace BusinessRules.Common
 
         public virtual async Task<int?> CreateAsync(T entity)
         {
+            entity.Id = 0;
             return await repository.CreateAsync(entity);
         }
 

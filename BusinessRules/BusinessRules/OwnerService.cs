@@ -9,6 +9,7 @@ namespace BusinessRules.BusinessRules
     {
         public OwnerService(IOwnerRepository repository) : base(repository)
         {
+            
         }
     }
 }

@@ -4,6 +4,7 @@ using DataAccess.Interface;
 using Entities;
 using Utilities.ExtensionMethod;
 using Utilities.Objects;
+using Utilities.Utilities;
 
 namespace BusinessRules.BusinessRules
 {
@@ -15,12 +16,14 @@ namespace BusinessRules.BusinessRules
 
         public override async Task<int?> CreateAsync(User entity)
         {
+            await ValidateJserNameDuplicateAsync(entity);
             entity.Password = entity.Password.Encript();
             return await base.CreateAsync(entity);
         }
 
         public override async Task<bool> UpdateAsync(User entity)
         {
+            await ValidateJserNameDuplicateAsync(entity);
             entity.Password = entity.Password.Encript();
             return await base.UpdateAsync(entity);
         }
@@ -59,6 +62,15 @@ namespace BusinessRules.BusinessRules
         public async Task<bool> ValidateUserAsync(User user)
         {
             return await repository.FindAsync(x => x.UserName == user.UserName && x.Password == user.Password.Encript()) != null;
+        }
+
+        private async Task ValidateJserNameDuplicateAsync(User user)
+        {
+            var userExist = await repository.FindAsync(x => x.UserName == user.UserName && x.Id != user.Id);
+            if (userExist is not null)
+            {
+                throw new ApplicationException(String.Format(ConstantsException.UserNameDuplicate, user.UserName));
+            }
         }
     }
 }

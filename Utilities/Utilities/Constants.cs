@@ -34,6 +34,7 @@
         public static readonly string PropertyNotFound = "The property does not exist";
         public static readonly string PropertyCodeDuplicate = "Property with this code: {0}, already exists";
         public static readonly string PropertyAddressDuplicate = "Property with this address: {0}, already exists";
+        public static readonly string UserNameDuplicate = "User with this userName: {0}, already exists";
     }
 
     public static class ConstantsQuery
