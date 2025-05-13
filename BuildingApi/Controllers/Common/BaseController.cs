@@ -1,4 +1,5 @@
 ﻿using BusinessRules.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Utilities.Objects;
 
@@ -6,7 +7,7 @@ namespace BuildingApi.Controllers.Common
 {
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
+    [Authorize]
     public abstract partial class BaseController<T, TService> : ControllerBase
         where T : class, new()
         where TService : class, IBaseBusinessRules<T>

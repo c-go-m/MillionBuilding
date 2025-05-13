@@ -1,84 +1,71 @@
+# 🧩 Million Building
 
-# 🧩 Million Building 
+Aplicación web desarrollada con .NET Core 9 que permite gestionar propiedades inmobiliarias en Estados Unidos. Proporciona una API REST para realizar operaciones CRUD sobre entidades del dominio y está diseñada bajo una arquitectura por capas.
 
-Aplicación desarrollada con .NET Core 9 que permite gestionar las propiedades inmobiliarias en Estados Unidos.
+---
 
 ## 🚀 Tecnologías utilizadas
 
 - .NET Core 9
 - ASP.NET Core Web API
 - Entity Framework Core
-- SQL Server 
-- Scalar 
+- SQL Server
+- Scalar
 - NUnit
 
-## 📂 Estructura del proyecto
+---
 
-```
+## 📁 Estructura del proyecto
+
+```text
 Million.Building/
-├── LayerApplication/ "Capa encargada de manejar la logica de negocio"
-│ └── BusinessRules/ 
-├── LayerCommon/ "Capa que contiene las funcionalidades que podran ser reutilizables en toda la aplicacion"
-│ └── Utilities/ 
-├── LayerDomain/ "Capa que contiene las clases que modelan el negocio"
-│ └── Entities/ 
-├── LayerInfrastructure/ "Capa que contiene la clases que permiten la comunicacion con componente externos"
-│ ├── DataAccess/
-│ └── Storage/
-├── LayerPresentation/ "Capa de permite exponer la funcionalidad de la aplicacion"
-│ └── BuildingApi/
-├── Test/
-│ └── UnitTest/
+├── LayerApplication/       # Lógica de negocio
+│   └── BusinessRules/
+├── LayerCommon/            # Funcionalidades reutilizables
+│   └── Utilities/
+├── LayerDomain/            # Modelos del dominio
+│   └── Entities/
+├── LayerInfrastructure/    # Comunicación con componentes externos
+│   ├── DataAccess/
+│   └── Storage/
+├── LayerPresentation/      # Capa de exposición (API)
+│   └── BuildingApi/
+├── Test/                   # Pruebas unitarias
+│   └── UnitTest/
 ```
+
+---
 
 ## 🔧 Requisitos previos
 
-- .NET 9 SDK
-- SQL Server
-- Visual Studio 2022
-- Docker
+- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
+- [Docker](https://www.docker.com/)
 
-## 🛠️ Instalación y configuración
+---
 
-1. Clonar el repositorio:
+## ⚙️ Instalación y configuración
+
+1. Clona el repositorio:
 
 ```bash
 git clone https://github.com/c-go-m/MillionBuilding.git
 cd MillionBuilding
 ```
 
-2. Restaurar los paquetes NuGet:
+2. Restaura los paquetes NuGet:
 
 ```bash
 dotnet restore
 ```
 
-3. Configurar las variables de entorno de configuracion `\MillionBuilding\BuildingApi\PropertieslaunchSettings.json`
+3. Configura las variables de entorno en `MillionBuilding/BuildingApi/Properties/launchSettings.json`:
 
 ```json
 {
   "profiles": {
     "http": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "scalar",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",        
-        "CONFIGURATION_APPLICATION_CORS_POLICY": "http://localhost:4200",
-        "CORS_POLICY": "cors_policy",
-        "CONNECTION_STRING_DATABASE": "Server=localhost,9005;Database=million_building;User Id=sa;Password=Mayo_2025.,*;TrustServerCertificate=True;",
-        "JWT_ISSUER": "https://api.million.com",
-        "JWT_AUDIENCE": "https://api.million.com",
-        "JWT_KEY": "HuN3v!2KD8s93l*Pq2Ws9ZmQ5cXyRz8B",
-        "JWT_EXPIRE": "30"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5162"
-    },
-    "https": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "scalar",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "CONFIGURATION_APPLICATION_CORS_POLICY": "http://localhost:4200",
@@ -88,56 +75,97 @@ dotnet restore
         "JWT_AUDIENCE": "https://api.million.com",
         "JWT_KEY": "HuN3v!2KD8s93l*Pq2Ws9ZmQ5cXyRz8B",
         "JWT_EXPIRE": "30"
-      },    
-      "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7099;http://localhost:5162"
-    },
-    "Container (Dockerfile)": {
-      "commandName": "Docker",
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "environmentVariables": {
-        "ASPNETCORE_HTTPS_PORTS": "8081",
-        "ASPNETCORE_HTTP_PORTS": "8080",
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONFIGURATION_APPLICATION_CORS_POLICY": "http://localhost:4200",
-        "CORS_POLICY": "cors_policy",
-        "CONNECTION_STRING_DATABASE": "Server=localhost,9005;Database=million_building;User Id=sa;Password=Mayo_2025.,*;TrustServerCertificate=True;",
-        "JWT_ISSUER": "https://api.million.com",
-        "JWT_AUDIENCE": "https://api.million.com",
-        "JWT_KEY": "HuN3v!2KD8s93l*Pq2Ws9ZmQ5cXyRz8B",
-        "JWT_EXPIRE": "30"
-      },
-      "publishAllPorts": true,
-      "useSSL": true
+      }
     }
-  },
-  "$schema": "https://json.schemastore.org/launchsettings.json"
+  }
 }
 ```
 
-## ▶️ Ejecución del proyecto con docker compose
+---
 
-Ejecuta la aplicación con:
+## 🐳 Ejecución con Docker Compose
+
+Levanta todos los servicios definidos en el archivo `docker-compose.yml`:
 
 ```bash
 docker-compose up -d --build --force-recreate
 ```
 
-## ▶️ Ejecución del proyecto
+---
 
-Ejecuta la aplicación con:
+## ▶️ Ejecución manual del proyecto
+
+Para iniciar la API localmente:
 
 ```bash
-dotnet run
+dotnet run --project ./LayerPresentation/BuildingApi
 ```
 
-La API estará disponible en:  
-🌐 `https://localhost:9001`  
-📘 scalar: `https://localhost:9001/scalar`
+La API estará disponible en:
 
-## ✅ Ejecución de pruebas
+- 🌐 http://localhost:9001
+- 📘 Swagger / Scalar: http://localhost:9001/scalar
+
+---
+
+## ✅ Pruebas unitarias
+
+Ejecuta las pruebas con:
 
 ```bash
 dotnet test
 ```
 
+---
+
+## 🔐 Autenticación y consumo de API
+
+### 1. Obtener token de autenticación
+
+```bash
+curl http://localhost:9001/User/Login   --request POST   --header 'Content-Type: application/json'   --data '{
+    "userName": "admin",
+    "password": "admin"
+  }'
+```
+
+### 2. Consumir endpoints protegidos
+
+```bash
+curl http://localhost:9001/User   --header 'Authorization: Bearer <token>'
+```
+
+---
+
+## 🔎 Filtros y paginación en la API
+
+Formato estándar para solicitudes con filtros:
+
+```json
+{
+  "filters": [
+    {
+      "name": "campo",       // Nombre del campo a filtrar
+      "value": "valor",      // Valor del filtro
+      "operator": 1          // Operador: 0=Equals, 1=NotEquals, 2=Minor, 3=MinorEquals, 4=Mayor, 5=MayorEquals, 6=Contains
+    }
+  ],
+  "sort": {
+    "name": "campo",         // Campo de ordenamiento
+    "direction": "Ascending" // o "Descending"
+  },
+  "page": {
+    "page": 1,
+    "pageSize": 10
+  }
+}
+```
+
+---
+
+## 📬 Contacto
+
+Desarrollado por [c-go-m](https://github.com/c-go-m)  
+Contribuciones y mejoras son bienvenidas.
+
+---

@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: ./BuildingApi/Dockerfile
     container_name: web
+    restart: always
     ports:
       - "9001:8080"
     environment:

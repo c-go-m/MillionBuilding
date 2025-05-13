@@ -81,6 +81,7 @@ namespace BuildingApi.Config
                 {
                     var context = scope.ServiceProvider.GetRequiredService<MainContext>();
                     context.Database.Migrate();
+                    DbInitializer.Seed(context);
                 }
             }
         }
