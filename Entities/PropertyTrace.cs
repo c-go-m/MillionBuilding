@@ -22,10 +22,11 @@ namespace Entities
         [Column(TypeName = "decimal(18,2)")]
         public decimal Tax { get; set; }
 
+        [Required]
         [ForeignKey("Property")]
         public int IdProperty { get; set; }
 
         [JsonIgnore]
-        public virtual Property Property { get; set; }
+        public virtual Property? Property { get; set; }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20250511042247_InitialCreate")]
+    [Migration("20250513005025_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -107,6 +107,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("File")
+                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 

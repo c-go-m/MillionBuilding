@@ -14,7 +14,7 @@ namespace BuildingApi.Controllers.Common
     {
         protected readonly TService service;
 
-        public BaseController(TService service)
+        protected BaseController(TService service)
         {
             this.service = service;
         }

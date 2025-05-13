@@ -26,10 +26,9 @@ try
     app.MapControllers();
     app.UseCors(ConstantsConfig.ConfigurationCorsPolicy);
 
-    app.Run();
+    await app.RunAsync();
 }
 catch (Exception ex)
 {    
-    Console.WriteLine($"Application startup failed: {ex.Message}");
-    //Environment.Exit(1);
+    Console.WriteLine($"Application startup failed: {ex.Message}");    
 }

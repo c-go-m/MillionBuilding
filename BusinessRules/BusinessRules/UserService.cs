@@ -46,7 +46,7 @@ namespace BusinessRules.BusinessRules
 
         public override async Task<CustomList<User>> Query(Query query) {
             var result = await base.Query(query);
-            result.List = result.List.ToList().Select(u => new User
+            result.List = result.List.AsEnumerable().Select(u => new User
             {
                 Id = u.Id,
                 UserName = u.UserName

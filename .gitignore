@@ -15,6 +15,7 @@
 x64/
 x86/
 .vs
+.sonarqube
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/

@@ -11,7 +11,7 @@ namespace Entities
         [MaxLength(100)]
         public string Name { get; set; }
 
-        [MaxLength(200)]        
+        [MaxLength(200)]
         public string? Address { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
@@ -23,11 +23,12 @@ namespace Entities
 
         public int Year { get; set; }
 
+        [Required]
         [ForeignKey("Owner")]
         public int IdOwner { get; set; }
 
         [JsonIgnore]
-        public virtual Owner Owner { get; set; }
+        public virtual Owner? Owner { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<PropertyImage>? PropertyImages { get; set; }

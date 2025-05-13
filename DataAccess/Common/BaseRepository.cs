@@ -11,7 +11,7 @@ namespace DataAccess.Common
     {
         public readonly MainContext context;
 
-        public BaseRepository(MainContext context)
+        protected BaseRepository(MainContext context)
         {
             this.context = context;
         }

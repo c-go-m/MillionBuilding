@@ -104,6 +104,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("File")
+                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 

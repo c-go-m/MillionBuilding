@@ -71,7 +71,7 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    File = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    File = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Enabled = table.Column<bool>(type: "bit", nullable: false),
                     IdProperty = table.Column<int>(type: "int", nullable: false)
                 },

@@ -11,7 +11,7 @@ namespace BusinessRules.Common
     {
 
         protected readonly TRepository repository;
-        public BaseBusinessRules(TRepository repository)
+        protected BaseBusinessRules(TRepository repository)
         {
             this.repository = repository;
         }
@@ -36,7 +36,7 @@ namespace BusinessRules.Common
             return await repository.GetAllAsync();
         }
 
-        public virtual async Task<T> GetByIdAsync(int id)
+        public virtual async Task<T?> GetByIdAsync(int id)
         {
             return await repository.GetByIdAsync(id);
         }
