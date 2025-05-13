@@ -12,6 +12,6 @@ namespace Entities
 
         [Required]
         [MaxLength(500)]
-        public string Password { get; set; } 
+        public string Password { get; set; }
     }
 }

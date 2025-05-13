@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using Utilities.GenericQuery;
 using Utilities.Objects;
-using Utilities.Utilities;
 
 namespace DataAccess.Common
 {
@@ -36,9 +35,9 @@ namespace DataAccess.Common
         public async Task<bool> DeleteAsync(int id)
         {
             var entity = await context.Set<T>().FindAsync(id);
-            
+
             if (entity is null) return false;
-            
+
             context.Set<T>().Remove(entity);
             return await context.SaveChangesAsync() > 0;
         }
@@ -49,7 +48,7 @@ namespace DataAccess.Common
         }
 
         public async Task<T?> GetByIdAsync(int id)
-        {            
+        {
             return await context.Set<T>().FindAsync(id);
         }
         public async Task<List<T>> SearchAsync(Expression<Func<T, bool>> expression)
@@ -60,7 +59,7 @@ namespace DataAccess.Common
         {
             var result = await context.Set<T>().FirstOrDefaultAsync(expression);
             return result is null ? null : result;
-        }        
+        }
 
         public IQueryable<T> Query(IQueryable<T> IQuery, Query query)
         {

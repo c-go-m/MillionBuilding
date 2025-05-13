@@ -10,14 +10,14 @@ namespace Utilities.Utilities
             Minor,
             MinorEquals,
             Mayor,
-            MayorEquals,                        
-            Contains            
+            MayorEquals,
+            Contains
         }
 
         public enum FilterOrder
         {
             Ascending,
             Descending
-        }        
+        }
     }
 }

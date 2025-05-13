@@ -9,5 +9,5 @@ namespace DataAccess.Repository
         public OwnerRepository(MainContext context) : base(context)
         {
         }
-    }    
+    }
 }

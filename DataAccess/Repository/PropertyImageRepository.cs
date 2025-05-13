@@ -9,5 +9,5 @@ namespace DataAccess.Repository
         public PropertyImageRepository(MainContext context) : base(context)
         {
         }
-    }    
+    }
 }

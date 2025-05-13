@@ -10,8 +10,8 @@ namespace Utilities.GenericQuery
         public static IQueryable<T> FilterGeneric<T>(this IQueryable<T> source, IEnumerable<ItemFilter> filters)
         {
             if (filters.Any()) return CreateIQueryable(source, filters);
-            
-            return source;            
+
+            return source;
         }
 
         private static IQueryable<T> CreateIQueryable<T>(IQueryable<T> source, IEnumerable<ItemFilter> filters)
@@ -21,7 +21,7 @@ namespace Utilities.GenericQuery
 
             finalExpression = CreateFilterExpression<T>(filters, parameter, finalExpression);
 
-            if (finalExpression == null) return source;            
+            if (finalExpression == null) return source;
 
             var lambda = Expression.Lambda<Func<T, bool>>(finalExpression, parameter);
             return source.Where(lambda);
@@ -32,9 +32,9 @@ namespace Utilities.GenericQuery
             foreach (var filter in filters)
             {
                 if (string.IsNullOrEmpty(filter.Name) || filter.Value == null) continue;
-                
+
                 var entityType = typeof(T);
-                var property = QueryGeneric.GetProperty(filter.Name, entityType);                               
+                var property = QueryGeneric.GetProperty(filter.Name, entityType);
 
                 var member = Expression.Property(parameter, property);
                 var constant = Expression.Constant(Convert.ChangeType(filter.Value.ToString(), property.PropertyType));
@@ -73,8 +73,8 @@ namespace Utilities.GenericQuery
                 case FilterOperation.Contains:
                     expression = Expression.Call(member, typeof(string).GetMethod("Contains", new[] { typeof(string) })!, constant);
                     break;
-                default:                    
-                    throw new ArgumentException(string.Format(ConstantsException.OperationInvalid,filter.Operator));
+                default:
+                    throw new ArgumentException(string.Format(ConstantsException.OperationInvalid, filter.Operator));
             }
 
             return expression;

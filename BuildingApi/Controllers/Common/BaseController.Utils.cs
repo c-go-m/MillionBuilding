@@ -13,9 +13,9 @@ namespace BuildingApi.Controllers.Common
             {
                 return await fnCallBack().ConfigureAwait(false);
             }
-            catch (Exception ex) 
-                when (ex is ArgumentNullException || ex is ArgumentException ||ex is InvalidOperationException)
-            {                
+            catch (Exception ex)
+                when (ex is ArgumentNullException || ex is ArgumentException || ex is InvalidOperationException)
+            {
                 return BadRequest(ex.Message);
             }
             catch (UnauthorizedAccessException ex)

@@ -40,7 +40,7 @@ namespace UnitTest.Common
 
         [Test]
         public void OrderByGeneric_WhenSortIsNull()
-        {            
+        {
             // Act  
             var result = _testData.AsQueryable().OrderByGeneric(null);
 

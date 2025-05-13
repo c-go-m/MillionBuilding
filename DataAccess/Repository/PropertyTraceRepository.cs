@@ -9,5 +9,5 @@ namespace DataAccess.Repository
         public PropertyTraceRepository(MainContext context) : base(context)
         {
         }
-    }    
+    }
 }

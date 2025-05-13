@@ -9,5 +9,5 @@ namespace DataAccess.Repository
         public UserRepository(MainContext context) : base(context)
         {
         }
-    }    
+    }
 }

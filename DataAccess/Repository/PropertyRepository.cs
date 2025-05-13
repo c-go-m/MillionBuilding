@@ -9,5 +9,5 @@ namespace DataAccess.Repository
         public PropertyRepository(MainContext context) : base(context)
         {
         }
-    }    
+    }
 }

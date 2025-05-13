@@ -24,7 +24,7 @@ namespace Utilities.ExtensionMethod
             if (Enum.TryParse<T>(valor, true, out var result))
             {
                 return result;
-            }            
+            }
             return Enum.GetValues(typeof(T)).Cast<T>().First();
         }
     }

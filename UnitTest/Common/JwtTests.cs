@@ -29,6 +29,6 @@ namespace UnitTest.Common
             // Assert  
             ClassicAssert.IsNotNull(token);
             ClassicAssert.IsNotEmpty(token);
-        }        
+        }
     }
 }

@@ -28,8 +28,8 @@ namespace BuildingApi.Config
         {
             services.AddCors(options =>
             {
-                options.AddPolicy(ConstantsConfig.ConfigurationCorsPolicy, builder => builder                
-                .WithOrigins(Environment.GetEnvironmentVariable(ConstantsConfig.ConfigurationApplicationCors).ValidateValue().Split("|"))                
+                options.AddPolicy(ConstantsConfig.ConfigurationCorsPolicy, builder => builder
+                .WithOrigins(Environment.GetEnvironmentVariable(ConstantsConfig.ConfigurationApplicationCors).ValidateValue().Split("|"))
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
@@ -37,8 +37,8 @@ namespace BuildingApi.Config
         }
 
         public static void AddAutentication(this IServiceCollection services)
-        {            
-            var jwtKey = Environment.GetEnvironmentVariable(ConstantsConfig.JwtKey).ValidateValue();            
+        {
+            var jwtKey = Environment.GetEnvironmentVariable(ConstantsConfig.JwtKey).ValidateValue();
             var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
 
             services.AddAuthentication(options =>
@@ -56,7 +56,7 @@ namespace BuildingApi.Config
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = Environment.GetEnvironmentVariable(ConstantsConfig.JwtIssuer).ValidateValue(),
-                    ValidAudience = Environment.GetEnvironmentVariable(ConstantsConfig.JwtAudience).ValidateValue(),                    
+                    ValidAudience = Environment.GetEnvironmentVariable(ConstantsConfig.JwtAudience).ValidateValue(),
                     IssuerSigningKey = new SymmetricSecurityKey(keyBytes)
                 };
             });
@@ -65,7 +65,7 @@ namespace BuildingApi.Config
         }
 
         public static void AddDatabase(this IServiceCollection services)
-        {                        
+        {
             var connectionString = Environment.GetEnvironmentVariable(ConstantsConfig.ConectionStringDataBase).ValidateValue();
 
             services.AddDbContext<MainContext>(options => options
@@ -92,10 +92,10 @@ namespace BuildingApi.Config
                 options.InvalidModelStateResponseFactory = context =>
                 {
                     var errors = context.ModelState
-                        .Where(e => e.Value?.Errors.Any() == true) 
+                        .Where(e => e.Value?.Errors.Any() == true)
                         .ToDictionary(
                             e => e.Key,
-                            e => e.Value!.Errors.Select(err => err.ErrorMessage).ToArray() 
+                            e => e.Value!.Errors.Select(err => err.ErrorMessage).ToArray()
                         );
 
                     return new BadRequestObjectResult(new

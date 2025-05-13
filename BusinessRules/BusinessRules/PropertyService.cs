@@ -22,7 +22,7 @@ namespace BusinessRules.BusinessRules
 
             return await base.CreateAsync(entity);
         }
-        
+
         public override async Task<bool> UpdateAsync(Property entity)
         {
             await this.ValidateExistOwnerAsync(entity);
@@ -57,7 +57,7 @@ namespace BusinessRules.BusinessRules
             if (property is not null)
             {
                 throw new ApplicationException(String.Format(ConstantsException.PropertyAddressDuplicate, entity.Address));
-            }            
+            }
         }
         #endregion
     }

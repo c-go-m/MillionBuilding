@@ -92,7 +92,7 @@ namespace BuildingApi.Tests.Controllers.Common
             // Assert  
             ClassicAssert.IsInstanceOf<OkObjectResult>(result);
             var okResult = result as OkObjectResult;
-            ClassicAssert.AreEqual(true,okResult.Value);
+            ClassicAssert.AreEqual(true, okResult.Value);
         }
 
         [Test]
@@ -111,6 +111,6 @@ namespace BuildingApi.Tests.Controllers.Common
             ClassicAssert.AreEqual(true, okResult.Value);
         }
 
-        
+
     }
 }

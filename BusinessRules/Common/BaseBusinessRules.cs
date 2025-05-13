@@ -42,11 +42,11 @@ namespace BusinessRules.Common
         }
 
         public virtual async Task<CustomList<T>> Query(Query query)
-        {  
+        {
             var data = await repository.Query(repository.GetContext().Set<T>(), query).ToListAsync();
             var count = await repository.QueryCount(repository.GetContext().Set<T>(), query);
             var page = new PageList(query.Page, count);
-            return new CustomList<T>(data,page);            
+            return new CustomList<T>(data, page);
         }
     }
 }

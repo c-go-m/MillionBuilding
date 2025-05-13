@@ -36,7 +36,8 @@
         public static readonly string PropertyAddressDuplicate = "Property with this address: {0}, already exists";
     }
 
-    public static class ConstantsQuery {
+    public static class ConstantsQuery
+    {
         public static readonly string OrderAscending = "OrderBy";
         public static readonly string OrderDescending = "OrderByDescending";
     }

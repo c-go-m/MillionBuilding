@@ -10,18 +10,18 @@ namespace Utilities.Objects
     }
 
     public class ItemSort
-    {        
-        public string Name { set; get; }        
+    {
+        public string Name { set; get; }
         public string Direction { set; get; }
     }
 
     public class ItemFilter
-    {        
+    {
         public string Name { set; get; }
 
         public object Value { set; get; }
-        
-        public FilterOperation Operator { set; get; }        
+
+        public FilterOperation Operator { set; get; }
     }
 
     public class ItemPage

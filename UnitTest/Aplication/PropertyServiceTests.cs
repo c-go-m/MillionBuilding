@@ -1,10 +1,10 @@
-using System.Linq.Expressions;
 using BusinessRules.BusinessRules;
 using BusinessRules.Interface;
 using DataAccess.Interface;
 using Entities;
 using Moq;
 using NUnit.Framework.Legacy;
+using System.Linq.Expressions;
 using Utilities.Utilities;
 
 namespace BusinessRules.Tests.BusinessRules
@@ -48,7 +48,7 @@ namespace BusinessRules.Tests.BusinessRules
             // Act & Assert  
             var ex = Assert.ThrowsAsync<ApplicationException>(async () => await propertyService.CreateAsync(property));
             ClassicAssert.AreEqual(string.Format(ConstantsException.PropertyCodeDuplicate, property.CodeInternal), ex.Message);
-        }        
+        }
 
         [Test]
         public async Task CreateAsync_ShouldCallBaseCreate_WhenValidationsPass()

@@ -20,7 +20,7 @@ namespace Utilities.Objects
             this.Data = data;
         }
 
-        public ResponseApi(int code,object data)
+        public ResponseApi(int code, object data)
         {
             this.Code = code;
             this.Message = string.Empty;

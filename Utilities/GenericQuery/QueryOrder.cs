@@ -8,12 +8,12 @@ using static Utilities.Utilities.Enumerations;
 
 namespace Utilities.GenericQuery
 {
-    public static class QueryOrder 
+    public static class QueryOrder
     {
         public static IQueryable<T> OrderByGeneric<T>(this IQueryable<T> source, ItemSort sort)
         {
             if (sort.IsNotNull() && !String.IsNullOrEmpty(sort.Name) && !String.IsNullOrEmpty(sort.Direction)) return CreateIQueryable(source, sort);
-            
+
             return source;
         }
 

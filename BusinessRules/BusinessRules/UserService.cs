@@ -34,17 +34,18 @@ namespace BusinessRules.BusinessRules
             }).ToList();
         }
 
-        public override async Task<User?> GetByIdAsync(int id) 
+        public override async Task<User?> GetByIdAsync(int id)
         {
             var user = await base.GetByIdAsync(id);
             return user is null ? null : new User
-            {  
+            {
                 Id = user.Id,
                 UserName = user.UserName
             };
         }
 
-        public override async Task<CustomList<User>> Query(Query query) {
+        public override async Task<CustomList<User>> Query(Query query)
+        {
             var result = await base.Query(query);
             result.List = result.List.AsEnumerable().Select(u => new User
             {

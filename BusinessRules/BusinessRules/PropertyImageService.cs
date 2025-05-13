@@ -16,14 +16,14 @@ namespace BusinessRules.BusinessRules
 
         public override async Task<int?> CreateAsync(PropertyImage entity)
         {
-            await this.ValidatePropertyExistAsync(entity);            
+            await this.ValidatePropertyExistAsync(entity);
 
             return await base.CreateAsync(entity);
         }
 
         public override async Task<bool> UpdateAsync(PropertyImage entity)
-        {            
-            await this.ValidatePropertyExistAsync(entity);            
+        {
+            await this.ValidatePropertyExistAsync(entity);
 
             return await base.UpdateAsync(entity);
         }

@@ -9,7 +9,7 @@ namespace BuildingApi.Config
     {
         public static IServiceCollection AddDependency(this IServiceCollection services)
         {
-            
+
             services.AddTransient<IOwnerService, OwnerService>();
             services.AddTransient<IPropertyService, PropertyService>();
             services.AddTransient<IUserService, UserService>();

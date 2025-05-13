@@ -17,18 +17,18 @@ try
 
     if (app.Environment.IsDevelopment())
     {
-        app.UseDocumentation();        
+        app.UseDocumentation();
     }
 
     app.UseHttpsRedirection();
     app.UseAuthentication();
-    app.UseAuthorization();    
+    app.UseAuthorization();
     app.MapControllers();
     app.UseCors(ConstantsConfig.ConfigurationCorsPolicy);
 
     await app.RunAsync();
 }
 catch (Exception ex)
-{    
-    Console.WriteLine($"Application startup failed: {ex.Message}");    
+{
+    Console.WriteLine($"Application startup failed: {ex.Message}");
 }
